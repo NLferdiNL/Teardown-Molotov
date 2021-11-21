@@ -1,0 +1,10 @@
+The sound named "bottleshatter_01.ogg", (originally named "41348__datasoundsample__glass-shatter.wav") is from datasoundsample at freesound.org.
+Sound page: https://freesound.org/people/datasoundsample/sounds/41348/
+Author: https://freesound.org/people/datasoundsample/
+
+The sound is used under the Attribution 3.0 Unported (CC BY 3.0) which you can find here:
+https://creativecommons.org/licenses/by/3.0/
+
+The sound has been modified to be slightly more muffled and lower volume.
+
+-----
