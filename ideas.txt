@@ -1,1 +1,0 @@
-use raycast with transparant and non transparant passthrough to check for glass, if its glass make hole

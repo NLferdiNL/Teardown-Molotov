@@ -1,4 +1,4 @@
 name = Molotov Cocktail
 author = NLferdiNL
-description = A molotov cocktail to start fires without burning yourself.
+description = [noupload]A molotov cocktail to start fires without burning yourself.
 tags = Tool

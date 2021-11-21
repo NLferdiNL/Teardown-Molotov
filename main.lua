@@ -62,8 +62,7 @@
 end
 
 
-local bottleshatterSFX = {}
-local d_lines = {}
+local bottleshatterSFX = LoadSound("MOD/snd/bottleshatter_0.ogg")
 
 molotov = {
 	shellNum = 1,
@@ -105,11 +104,7 @@ function init()
 		SetFloat("game.tool.molotov.ammo", 0)
 	end
 	
-	--bottleShatterSnd = LoadSound("MOD/snd/bottleshatter_original_sound.ogg")
 	
-	for i=1, 3 do
-		bottleshatterSFX[i] = LoadSound("MOD/snd/bottleshatter_0.ogg")
-	end
 	
 	for i=1, molotov.maxShells do
 		molotov.shells[i] = deepcopy(molotov.defaultShell)
@@ -203,7 +198,7 @@ function MolotovOperations(projectile)
 		
 		if hitWindow then
 			local hitPoint = VecAdd(projectile.pos, VecScale(dir, distT))
-			MakeHole(hitPoint, 1)
+			MakeHole(hitPoint, 1, 0, 0)
 		end
 	end
 	
@@ -233,21 +228,7 @@ function MolotovEmberOperations(projectile)
 	end
 end
 
-function drawLines(dt)
-	for i = #d_lines, 1, -1 do
-		local currLine = d_lines[i]
-		DrawLine(currLine.p1, currLine.p2, currLine.r, currLine.g, currLine.b, currLine.a)
-		currLine.lifetime = currLine.lifetime - dt
-		
-		if currLine.lifetime <= 0 then
-			table.remove(d_lines, i, 1)
-		end
-	end
-end
-
 function tick(dt)
-	drawLines(dt)
-	
 	local ct = GetCameraTransform()
 	local gunpos = TransformToParentPoint(ct, Vec(0.25, -0.2, -0.8))
 	if GetString("game.player.tool") == "molotov" then
@@ -282,9 +263,8 @@ function tick(dt)
 				--SpawnParticle("fire", VecAdd(randVec, shell.pos), rndVec(1), 0.5, 1)
 			end
 			
-			if not silencedMolotov then
-				local soundId = math.random(1, #bottleshatterSFX)
-				PlaySound(bottleshatterSFX[soundId], shell.pos, 5)
+			if not silencedMolotov and bottleshatterSFX ~= nil then
+				PlaySound(bottleshatterSFX, shell.pos, 5)
 			end
 		end
 
